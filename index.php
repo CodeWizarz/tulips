@@ -152,26 +152,26 @@ Continuation:
 
 ```php
     </style>
+   
     <script>
-        function reloadPage() {
-            location.reload();
-        }
+    <?php
+    function reloadPage() {
+        location.reload();
+    }
 
-        // Preloader
-        document.addEventListener("DOMContentLoaded", function() {
-            const preloaderOverlay = document.querySelector(".preloader-overlay");
+    
+    $preloaderOverlay = '<div class="preloader-overlay"></div>';
 
-            // Hide preloader after 3 seconds
-            setTimeout(function() {
-                preloaderOverlay.classList.add("fade-out");
-            }, 3000);
+    
+    $preloaderOverlay .= '<script>setTimeout(function() { document.querySelector(".preloader-overlay").classList.add("fade-out"); }, 3000);</script>';
 
-            // Remove preloader from the DOM after fading out
-            setTimeout(function() {
-                preloaderOverlay.remove();
-            }, 3500);
-        });
-    </script>
+    
+    $preloaderOverlay .= '<script>setTimeout(function() { document.querySelector(".preloader-overlay").remove(); }, 3500);</script>';
+
+    echo $preloaderOverlay;
+    ?>
+</script>
+
 </head>
 <body>
     <div class="preloader-overlay">
